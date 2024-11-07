@@ -1,31 +1,30 @@
-import java.util.Scanner;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 
-public class EligibleVotersCount {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        // Read the number of test cases
-        int T = scanner.nextInt();
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt(); // Number of test cases
         
         while (T-- > 0) {
-            // Read N (number of people) and X (minimum voting age)
-            int N = scanner.nextInt();
-            int X = scanner.nextInt();
+            long L = sc.nextLong(); // Length of the stick
+            long K = sc.nextLong(); // Number of parts
             
-            int eligibleCount = 0; // Initialize count of eligible voters
+            // Calculate small part length and remainder
+            long smallPart = L / K;
+            long remainder = L % K;
             
-            // Read the ages of N people and count eligible voters
-            for (int i = 0; i < N; i++) {
-                int age = scanner.nextInt();
-                if (age >= X) {
-                    eligibleCount++;
-                }
-            }
+            // Calculate minimum sum of absolute differences
+            long minSumDifference = remainder * (K - remainder);
             
-            // Output the number of eligible voters for this test case
-            System.out.println(eligibleCount);
+            // Output the result
+            System.out.println(minSumDifference);
         }
         
-        scanner.close(); // Close the scanner to prevent resource leaks
-    }
+        sc.close();
+
+	}
 }
